@@ -1,5 +1,5 @@
 import React from "react";
-import { About, Header, Hero } from "./components";
+import { About, Header, Hero, WorkExperience } from "./components";
 
 const App = () => {
   return (
@@ -12,6 +12,10 @@ const App = () => {
 
       <section id="about" className="snap-center">
         <About />
+      </section>
+
+      <section id="experience" className="snap-center">
+        <WorkExperience />
       </section>
     </div>
   );
