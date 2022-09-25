@@ -1,5 +1,5 @@
 import React from "react";
-import { About, Header, Hero, WorkExperience } from "./components";
+import { About, Header, Hero, Skills, WorkExperience } from "./components";
 
 const App = () => {
   return (
@@ -16,6 +16,10 @@ const App = () => {
 
       <section id="experience" className="snap-center">
         <WorkExperience />
+      </section>
+
+      <section id="skills" className="snap-start">
+        <Skills />
       </section>
     </div>
   );
