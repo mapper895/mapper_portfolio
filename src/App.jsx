@@ -1,6 +1,7 @@
 import React from "react";
 import {
   About,
+  ContactMe,
   Header,
   Hero,
   Projects,
@@ -31,6 +32,10 @@ const App = () => {
 
       <section id="projects" className="snap-start">
         <Projects />
+      </section>
+
+      <section id="contact" className="snap-start">
+        <ContactMe />
       </section>
     </div>
   );
