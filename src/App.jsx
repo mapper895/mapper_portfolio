@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import {
   About,
   ContactMe,
@@ -37,6 +38,18 @@ const App = () => {
       <section id="contact" className="snap-start">
         <ContactMe />
       </section>
+
+      <Link reloadDocument to="#hero">
+        <footer className="sticky bottom-5 w-full cursor-pointer">
+          <div className="flex items-center justify-center">
+            <img
+              className="h-10 w-10 rounded-full filter grayscale hover:grayscale-0 cursor-pointer object-cover"
+              src="https://cdn.sanity.io/images/jzu4id4u/production/6020beaebd3a0458e9cf4361e0e567c8412adaed-4624x2608.jpg"
+              alt="profile"
+            />
+          </div>
+        </footer>
+      </Link>
     </div>
   );
 };
