@@ -32,16 +32,16 @@ const Hero = () => {
         </h1>
 
         <div className="pt-5">
-          <Link to="/#about">
+          <Link reloadDocument to="/#about">
             <button className="heroButton">About</button>
           </Link>
-          <Link to="/#experience">
+          <Link reloadDocument to="/#experience">
             <button className="heroButton">Experience</button>
           </Link>
-          <Link to="/#skills">
+          <Link reloadDocument to="/#skills">
             <button className="heroButton">Skills</button>
           </Link>
-          <Link to="/#projects">
+          <Link reloadDocument to="/#projects">
             <button className="heroButton">Projects</button>
           </Link>
         </div>

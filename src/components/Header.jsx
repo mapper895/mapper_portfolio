@@ -21,7 +21,7 @@ const Header = () => {
         <SocialIcon url="youtube.com" fgColor="gray" bgColor="transparent" />
       </motion.div>
 
-      <Link to={"/#contact"}>
+      <Link reloadDocument to={"/#contact"}>
         <motion.div
           initial={{ x: 500, opacity: 0, scale: 0.5 }}
           animate={{ x: 0, opacity: 1, scale: 1 }}
