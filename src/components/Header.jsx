@@ -1,10 +1,19 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 import { motion } from "framer-motion";
 import { SocialIcon } from "react-social-icons";
 import { Link } from "react-router-dom";
+import { client } from "../client";
 
 const Header = () => {
+  const [socials, setSocials] = useState([]);
+
+  useEffect(() => {
+    const query = '*[_type == "social"]';
+
+    client.fetch(query).then((data) => setSocials(data));
+  });
+
   return (
     <header className="sticky top-0 flex items-start justify-between max-w-7xl mx-auto z-20 xl:items-center p-5">
       <motion.div
@@ -14,11 +23,14 @@ const Header = () => {
         className="flex flex-row items-center"
       >
         {/* Social Icons */}
-        <SocialIcon url="facebook.com" fgColor="gray" bgColor="transparent" />
-        <SocialIcon url="instagram.com" fgColor="gray" bgColor="transparent" />
-        <SocialIcon url="twitter.com" fgColor="gray" bgColor="transparent" />
-        <SocialIcon url="linkedin.com" fgColor="gray" bgColor="transparent" />
-        <SocialIcon url="youtube.com" fgColor="gray" bgColor="transparent" />
+        {socials.map((social) => (
+          <SocialIcon
+            key={social._id}
+            url={social.url}
+            fgColor="gray"
+            bgColor="transparent"
+          />
+        ))}
       </motion.div>
 
       <Link reloadDocument to={"/#contact"}>

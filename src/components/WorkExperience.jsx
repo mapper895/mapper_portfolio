@@ -1,9 +1,21 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 import { motion } from "framer-motion";
 import ExperienceCard from "./ExperienceCard";
+import { client } from "../client";
 
 const WorkExperience = () => {
+  const [experiences, setExperiences] = useState([]);
+
+  useEffect(() => {
+    const query = `*[_type == "experience"]{
+      ...,
+      technologies[]->
+    }`;
+
+    client.fetch(query).then((data) => setExperiences(data));
+  }, []);
+
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -16,10 +28,9 @@ const WorkExperience = () => {
       </h3>
 
       <div className="w-full flex space-x-5 overflow-x-scroll p-10 snap-x snap-mandatory  scrollbar-thin scrollbar-track-gray-400/20 scrollbar-thumb-[#05c3dd]/80">
-        <ExperienceCard />
-        <ExperienceCard />
-        <ExperienceCard />
-        <ExperienceCard />
+        {experiences.map((experience) => (
+          <ExperienceCard key={experience._id} experience={experience} />
+        ))}
       </div>
     </motion.div>
   );

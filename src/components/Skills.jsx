@@ -1,9 +1,18 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 import { motion } from "framer-motion";
 import Skill from "./Skill";
+import { client } from "../client";
 
 const Skills = () => {
+  const [skills, setSkills] = useState([]);
+
+  useEffect(() => {
+    const query = '*[_type == "skill"]';
+
+    client.fetch(query).then((data) => setSkills(data));
+  }, []);
+
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -20,26 +29,16 @@ const Skills = () => {
       </h3>
 
       <div className="grid grid-cols-4 gap-5">
-        <Skill />
-        <Skill />
-        <Skill />
-        <Skill />
-        <Skill />
-        <Skill />
-        <Skill />
-        <Skill />
-        <Skill />
-        <Skill />
-        <Skill />
-        <Skill />
-        <Skill />
-        <Skill />
-        <Skill />
-        <Skill />
-        <Skill />
-        <Skill />
-        <Skill />
-        <Skill />
+        {skills &&
+          skills
+            .slice(0, skills.length / 2)
+            .map((skill) => <Skill key={skill._id} skill={skill} />)}
+        {skills &&
+          skills
+            .slice(skills.length / 2, skills.length)
+            .map((skill) => (
+              <Skill key={skill._id} skill={skill} directionLeft />
+            ))}
       </div>
     </motion.div>
   );

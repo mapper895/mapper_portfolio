@@ -1,8 +1,16 @@
 import React from "react";
 
 import { motion } from "framer-motion";
+import { urlFor } from "../client";
 
-const About = () => {
+const About = ({ pageInfo }) => {
+  // const [pageInfo, setPageInfo] = useState([]);
+
+  // useEffect(() => {
+  //   const query = '*[_type == "pageInfo"][0]';
+
+  //   client.fetch(query).then((data) => setPageInfo(data));
+  // }, []);
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -15,8 +23,8 @@ const About = () => {
       </h3>
 
       <motion.img
-        src="https://cdn.sanity.io/images/jzu4id4u/production/c43d0c439371a142c5dc81c73e3a513cbc940026-960x1280.jpg"
-        alt="myphoto"
+        src={urlFor(pageInfo.profilePic).url()}
+        alt={pageInfo.name}
         initial={{ x: -200, opacity: 0 }}
         transition={{ duration: 1.2 }}
         whileInView={{ x: 0, opacity: 1 }}
@@ -30,21 +38,7 @@ const About = () => {
           <span className="underline decoration-[#05c3dd]/50">little</span>{" "}
           background
         </h4>
-        <p className="text-base">
-          I´m Miguel✌. You might also know me as MAPPER! Here is a little bit
-          about me... I´ve been coding for over 5 years now. As a Full-Stack
-          developer I´ve worked both with startups and large corporations to
-          help build & scale their companies. Along the journey I realised my
-          passion existed in helping others excel and pursue their dreams as
-          upcoming developers. I have now trained thousand´s of developers
-          across the globe. Through live coaching session on Youtube, I have
-          accumulated several MILLION views demostrating how to apply developer
-          skills in a range od cool builds and challenges. I deliver REAL VALUE
-          by teaching development. You´ll get hans-on experience and learn the
-          skills that are required to succeed in the real-world in this
-          comunity. And if that´s not enough, I have cloned most of the
-          applications you have used in your life!
-        </p>
+        <p className="text-base">{pageInfo.backgroundInformation}</p>
       </div>
     </motion.div>
   );
