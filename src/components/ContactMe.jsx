@@ -51,18 +51,18 @@ const ContactMe = ({ pageInfo }) => {
         </h4>
 
         <div className="space-y-6">
-          <div className="flex items-center space-x-5 justify-center">
-            <PhoneIcon
-              onClick={() => (window.location = `tel:${pageInfo.phoneNumber}`)}
-              className="text-[#05c3dd] h-7 w-7 animate-pulse cursor-pointer"
-            />
+          <div
+            className="flex items-center space-x-5 justify-center cursor-pointer"
+            onClick={() => (window.location = `tel:${pageInfo.phoneNumber}`)}
+          >
+            <PhoneIcon className="text-[#05c3dd] h-7 w-7 animate-pulse" />
             <p className="text-xl">{pageInfo.phoneNumber}</p>
           </div>
-          <div className="flex items-center space-x-5 justify-center">
-            <EnvelopeIcon
-              onClick={() => (window.location = `mailto:${pageInfo.email}`)}
-              className="text-[#05c3dd] h-7 w-7 animate-pulse cursor-pointer"
-            />
+          <div
+            className="flex items-center space-x-5 justify-center cursor-pointer"
+            onClick={() => (window.location = `mailto:${pageInfo.email}`)}
+          >
+            <EnvelopeIcon className="text-[#05c3dd] h-7 w-7 animate-pulse " />
             <p className="text-xl">{pageInfo.email}</p>
           </div>
           <div className="flex items-center space-x-5 justify-center">

@@ -43,6 +43,9 @@ const Hero = ({ pageInfo }) => {
           <Link reloadDocument to="/#skills">
             <button className="heroButton">Skills</button>
           </Link>
+          <Link reloadDocument to="/#testimonials">
+            <button className="heroButton">Testimonials</button>
+          </Link>
           <Link reloadDocument to="/#projects">
             <button className="heroButton">Projects</button>
           </Link>

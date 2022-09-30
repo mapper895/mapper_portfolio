@@ -11,6 +11,7 @@ import project from "./projects";
 import skill from "./skill";
 import social from "./social";
 import contact from "./contact";
+import brands from "./brands";
 
 export default createSchema({
   name: "default",
@@ -22,5 +23,6 @@ export default createSchema({
     project,
     skill,
     social,
+    brands,
   ]),
 });

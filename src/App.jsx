@@ -8,6 +8,7 @@ import {
   Hero,
   Projects,
   Skills,
+  Testimonials,
   WorkExperience,
 } from "./components";
 
@@ -44,6 +45,10 @@ const App = () => {
 
           <section id="projects" className="snap-start">
             <Projects />
+          </section>
+
+          <section id="testimonials" className="snap-start">
+            <Testimonials />
           </section>
 
           <section id="contact" className="snap-start">
