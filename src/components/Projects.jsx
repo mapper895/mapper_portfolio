@@ -2,9 +2,12 @@ import React, { useEffect, useState } from "react";
 
 import { motion } from "framer-motion";
 import { client, urlFor } from "../client";
+import mouseScroll from "../assets/scrolling_mousewheel.gif";
+import shift from "../assets/shift.jpg";
 
 const Projects = () => {
   const [projects, setProjects] = useState([]);
+  const [showElement, setShowElement] = useState(true);
 
   useEffect(() => {
     const query = `
@@ -15,6 +18,9 @@ const Projects = () => {
     `;
 
     client.fetch(query).then((data) => setProjects(data));
+    setTimeout(() => {
+      setShowElement(false);
+    }, 5000);
   }, []);
 
   return (
@@ -74,6 +80,30 @@ const Projects = () => {
       </div>
 
       <div className="w-full absolute top-[30%] bg-[#05c3dd]/10 left-0 h-[500px] -skew-y-12" />
+
+      {showElement && (
+        <motion.div
+          initial={{ y: -200 }}
+          whileInView={{ y: 0 }}
+          transition={{ duration: 1.2 }}
+          className="absolute flex justify-center items-center top-[55%] bg-white opacity-0 sm:opacity-90 w-[450px] h-[250px] z-50 rounded-3xl "
+        >
+          <div className="flex flex-col">
+            <div className="flex flex-row justify-center items-center">
+              <img className="w-[150px]" src={shift} alt="" />
+              <p className="text-[50px] text-center mb-4 text-black">+</p>
+              <img
+                className="h-[150px] w-[100px] object-cover"
+                src={mouseScroll}
+                alt="mouse"
+              />
+            </div>
+            <p className="text-[26px] text-center text-black">
+              Shift + Mouse scroll
+            </p>
+          </div>
+        </motion.div>
+      )}
     </motion.div>
   );
 };
